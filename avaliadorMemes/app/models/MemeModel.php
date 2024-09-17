@@ -1,6 +1,17 @@
 <?php
-    Class MemeModel {
-        function index () {
-            echo "METODO INDEX DO MODEL TA ON";
+    Class MemeModel //nome no controller ta errado
+    {
+        private $db;
+
+        public function __construct() {
+
+            $this->db = Database::getConnection();
+            
         }
+
+        function index() {
+            echo"função index";
+        }
+
+        
     }
