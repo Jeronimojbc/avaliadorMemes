@@ -35,7 +35,7 @@
         }
 
         public function update($data) {
-            $query = $this->db->prepare("UPDATE INTO memes (titulo, imagem_url, imagem_update, media_avaliacao) VALUES (:titulo, :imagem_url, :imagem_update, :media_avaliacao)");
+            $query = $this->db->prepare("UPDATE SET memes (titulo, imagem_url, imagem_update, media_avaliacao) VALUES (:titulo, :imagem_url, :imagem_update, :media_avaliacao)");
     
             return $query->execute($data);
         }

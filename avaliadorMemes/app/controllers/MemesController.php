@@ -1,6 +1,6 @@
 <?php
 
-require_once '../app/Models/MemeModel.php';
+require_once '/app/models/MemeModel.php';
 
 class MemesController
 {
