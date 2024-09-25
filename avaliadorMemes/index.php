@@ -16,4 +16,5 @@
   require_once 'app/models/UsuarioModel.php';
   echo"jeroguitar";
     
+    require_once 'app/views/memes/show.php';
 ?>
