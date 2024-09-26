@@ -34,6 +34,7 @@
             return $query->execute($meme);
         }
 
+   MemesControler_fixed
         public function update($meme) {
             $query = $this->db->prepare("UPDATE SET memes (titulo, imagem_url, imagem_update, media_avaliacao) VALUES (:titulo, :imagem_url, :imagem_update, :media_avaliacao)");
     
