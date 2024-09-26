@@ -1,6 +1,6 @@
 <?php
 
-require_once 'app/models/MemesController.php';
+require_once 'app/models/MemeModel.php';
 
 class MemesController
 {
@@ -8,7 +8,7 @@ class MemesController
 
     public function __construct()
     {
-        $this->model = new model();
+        $this->model = new MemeModel();
     }
     
     public function index()
@@ -24,32 +24,37 @@ class MemesController
 
     public function store()
     {
-        $data =  [
+        $meme =  [
             'titulo' => $_POST['titulo'],
             'descricao' => $_POST['descricao'],
             'imagem_url' => $_POST['imagem_url'],   
             'imagem_upload' => $_POST['imagem_upload'],   
         ];
-        $this->model->insert($data);
+        $this->model->insert($meme);
         header('Location: /memes');
 
     }
     
     public function show($id)
     {
-        $meme = $this->model->getMemeById($id);
+        $memes = $this->model->getById($id);
+echo "<pre>";
+print_r($memes);
+exit;
+
+
         require 'views/memes/show.php';
     }
 
     public function update($id)
     {
-        $data = [
+        $meme = [
             'titulo' => $_POST['titulo'],
             'descricao' => $_POST['descricao'],
             'imagem_url' => $_POST['imagem_url'],   
             'imagem_upload' => $_POST['imagem_upload'],
         ];
-        $this->model->update($id, $data);
+        $this->model->update($id, $meme);
         header('Location: /memes');
 
     }

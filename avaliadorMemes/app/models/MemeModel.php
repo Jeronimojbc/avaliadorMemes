@@ -14,7 +14,7 @@
         }
 
         public function getAllMemes() {
-           $query = $this->$db->query('SELECT * FROM memes ORDER BY media_avaliacao DESC');
+           $query = $this->db->query('SELECT * FROM memes ORDER BY media_avaliacao DESC');
 
            return $query->fetchAll(PDO::FETCH_ASSOC);
         }
@@ -28,16 +28,16 @@
             return $query->fetch(PDO::FETCH_ASSOC);
         }
 
-        public function insert($data) {
+        public function insert($meme) {
             $query = $this->db->prepare("INSERT INTO memes (titulo, imagem_url, imagem_update, media_avaliacao) VALUES (:titulo, :imagem_url, :imagem_update, :media_avaliacao)");
     
-            return $query->execute($data);
+            return $query->execute($meme);
         }
 
-        public function update($data) {
-            $query = $this->db->prepare("UPDATE INTO memes (titulo, imagem_url, imagem_update, media_avaliacao) VALUES (:titulo, :imagem_url, :imagem_update, :media_avaliacao)");
+        public function update($meme) {
+            $query = $this->db->prepare("UPDATE SET memes (titulo, imagem_url, imagem_update, media_avaliacao) VALUES (:titulo, :imagem_url, :imagem_update, :media_avaliacao)");
     
-            return $query->execute($data);
+            return $query->execute($meme);
         }
 
         public function delete($id)  {  
