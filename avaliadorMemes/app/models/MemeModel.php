@@ -29,14 +29,14 @@
         }
 
         public function insert($meme) {
-            $query = $this->db->prepare("INSERT INTO memes (titulo, imagem_url, imagem_update, media_avaliacao) VALUES (:titulo, :imagem_url, :imagem_update, :media_avaliacao)");
+            $query = $this->db->prepare("INSERT INTO memes (titulo, descricao, imagem_url, imagem_upload, media_avaliacao) VALUES (:titulo, :descricao, :imagem_url, :imagem_upload, :media_avaliacao)");
     
             return $query->execute($meme);
         }
 
  
         public function update($meme) {
-            $query = $this->db->prepare("UPDATE SET memes (titulo, imagem_url, imagem_update, media_avaliacao) VALUES (:titulo, :imagem_url, :imagem_update, :media_avaliacao)");
+            $query = $this->db->prepare("UPDATE SET memes (titulo, descricao, imagem_url, imagem_upload, media_avaliacao) VALUES (:titulo, :descricao, :imagem_url, :imagem_upload, :media_avaliacao)");
     
             return $query->execute($meme);
         }

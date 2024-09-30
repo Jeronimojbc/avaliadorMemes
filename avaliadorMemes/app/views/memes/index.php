@@ -14,7 +14,7 @@
 <body>
 
     <h1>Lista de Memes</h1>
-    <a href="create.php">Cadastrar Novo Meme</a>
+    <a href="/memes">Cadastrar Novo Meme</a>
 
     <table>
         <thead>

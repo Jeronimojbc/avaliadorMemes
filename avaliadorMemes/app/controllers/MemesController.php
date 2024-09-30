@@ -19,6 +19,7 @@ class MemesController
 
     public function create()
     {
+
         include 'app/views/memes/create.php';
     }
 
@@ -30,17 +31,22 @@ class MemesController
             'imagem_url' => $_POST['imagem_url'],   
             'imagem_upload' => $_POST['imagem_upload'],   
         ];
+        
+        echo "<pre>";
+        print_r($meme);
+        exit; 
+
         $this->model->insert($meme);
-        header('Location: /memes');
+        header('Location: /memes/show.php');
 
     }
     
     public function show($id)
     {
         $memes = $this->model->getById($id);
-echo "<pre>";
-print_r($memes);
-exit;
+    echo "<pre>";
+    print_r($memes);
+    exit;
 
 
         require 'views/memes/show.php';
