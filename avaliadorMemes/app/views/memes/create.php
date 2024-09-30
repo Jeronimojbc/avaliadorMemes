@@ -14,7 +14,7 @@
 <body>
 
     <h1>Cadastrar Novo Meme</h1>
-    <form action="store.php" method="POST" enctype="multipart/form-data">
+    <form action="/memes/store" method="POST" enctype="multipart/form-data">
         <label for="titulo">Título:</label>
         <input type="text" name="titulo" required>
 
