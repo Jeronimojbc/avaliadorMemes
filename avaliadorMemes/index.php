@@ -22,7 +22,9 @@
     }elseif ($uri === '/memes/show.php'){
         $controller = new MemesController();
         $controller->index();
-    }
+
+    /* Rota para avaliar*/     
+    }elseif ($uri === 'rate.php')
 
 
 
