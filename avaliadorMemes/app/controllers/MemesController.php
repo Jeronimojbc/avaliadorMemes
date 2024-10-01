@@ -33,9 +33,9 @@ class MemesController
         ];
         
         echo "<pre>";
-        print_r($meme);
-        exit; 
-
+        var_dump($meme);
+       
+       
         $this->model->insert($meme);
         header('Location: /memes/show.php');
 
