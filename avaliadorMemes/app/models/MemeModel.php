@@ -29,14 +29,16 @@
         }
 
         public function insert($meme) {
-            $query = $this->db->prepare("INSERT INTO memes (titulo, descricao, imagem_url, imagem_upload, media_avaliacao) VALUES (:titulo, :descricao, :imagem_url, :imagem_upload, :media_avaliacao)");
-    
+            $query = $this->db->prepare("INSERT INTO memes (titulo, descricao, imagem_url, imagem_upload) VALUES (:titulo, :descricao, :imagem_url, :imagem_upload)");
+
             return $query->execute($meme);
+
+          
         }
 
  
         public function update($meme) {
-            $query = $this->db->prepare("UPDATE SET memes (titulo, descricao, imagem_url, imagem_upload, media_avaliacao) VALUES (:titulo, :descricao, :imagem_url, :imagem_upload, :media_avaliacao)");
+            $query = $this->db->prepare("UPDATE SET memes (titulo, descricao, imagem_url, imagem_upload) VALUES (:titulo, :descricao, :imagem_url, :imagem_upload)");
     
             return $query->execute($meme);
         }
@@ -46,6 +48,11 @@
 
         return $query->execute(['id' => $id]);
     }
+
+    // Funções para avaliar
+        public function avaliar($id) {
+            $query = $this->db->prepare("INSERT INTO avaliacoes (nota) VALUES (:nota)");
+        }
     }
     
 

@@ -22,12 +22,17 @@
     }elseif ($uri === '/show'){
         $controller = new MemesController();
         $controller->index();
+
     } elseif (preg_match('/^\/memes\/show\/(\d+)$/', $uri, $matches)) {
         $controller = new MemesController();
         
         print_r($matches);
         $controller->show($matches[1]);
     }    
+
+
+    /* Rota para avaliar*/     
+    }elseif ($uri === 'rate.php')
 
 
 
