@@ -37,7 +37,7 @@ class MemesController
        
        
         $this->model->insert($meme);
-        header('Location: /memes/show.php');
+        header('Location: /show');
 
     }
     
