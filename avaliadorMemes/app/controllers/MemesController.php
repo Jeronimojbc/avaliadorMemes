@@ -44,12 +44,12 @@ class MemesController
     public function show($id)
     {
         $memes = $this->model->getById($id);
-    echo "<pre>";
-    print_r($memes);
-    exit;
+    // echo "<pre>";
+    // print_r($memes);
+    // exit;
+        $meme = [];
 
-
-        require 'views/memes/show.php';
+        require 'app/views/memes/show.php';
     }
 
     public function update($id)
@@ -71,4 +71,24 @@ class MemesController
 
         header('Location: /memes');
     }
+
+    
+     public function avaliar() {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $memeId = isset($_GET['id']) ? intval($_GET['id']) : 0;
+                $avaliacao = isset($_POST['avaliacao']) ? intval($_POST['avaliacao']) : 0;
+    
+                if ($memeId && $rating) {
+                    $memeModel = new MemeModel();
+                    $memeModel->avaliarMeme($memeId, $rating);
+    
+                    // Redirect or provide feedback
+                    echo "Meme Avaliado com Sucesso!";
+                } else {
+                    echo "Id Invalido Deu Errooo!.";
+                }
+            }
+        }
+   
+    
 }

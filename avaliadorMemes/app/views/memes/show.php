@@ -26,7 +26,7 @@
     <h2>Avaliação Média: <?= htmlspecialchars($meme['media_avaliacao']) ?></h2>
 
     <h3>Avaliar este Meme:</h3>
-    <form action="rate.php?id=<?= $meme['id'] ?>" method="POST">
+    <form action="avaliar/<?= $meme['id'] ?>" method="POST">
         <label for="nota">Nota (1-5):</label>
         <select name="nota" required>
             <option value="1">1</option>
