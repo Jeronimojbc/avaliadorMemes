@@ -53,6 +53,13 @@
         public function avaliar($id) {
             $query = $this->db->prepare("INSERT INTO avaliacoes (nota) VALUES (:nota)");
         }
+
+      public function avaliarMeme($id, $avaliacao) {
+           $query = "UPDATE memes_em_geral SET media_avaliacao = ? WHERE id = ?";
+        $stmt = $this->db->prepare($query);
+            $stmt->bind_param('ii', $avaliacao, $id);
+          $stmt->execute();
+            }
     }
     
 

@@ -40,7 +40,7 @@
                     </td>
                     <td><?= htmlspecialchars($meme['media_avaliacao']) ?></td>
                     <td>
-                        <a href="show.php?id=<?= $meme['id'] ?>">Ver Detalhes</a>
+                         <a href="/memes/show/<?= $meme['id'] ?>">Ver Detalhes</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
