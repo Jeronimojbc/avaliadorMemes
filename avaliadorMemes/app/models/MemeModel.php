@@ -36,13 +36,6 @@
           
         }
 
- 
-        public function update($meme) {
-            $query = $this->db->prepare("UPDATE SET memes (titulo, descricao, imagem_url, imagem_upload) VALUES (:titulo, :descricao, :imagem_url, :imagem_upload)");
-    
-            return $query->execute($meme);
-        }
-
         public function delete($id)  {  
         $query = $this->db->prepare("DELETE FROM memes WHERE id = :id");
 
@@ -50,17 +43,28 @@
     }
 
     // Funções para avaliar
-        public function avaliar($id) {
+        /* public function avaliar($avaliacoes) {
             $query = $this->db->prepare("INSERT INTO avaliacoes (nota) VALUES (:nota)");
-        }
+            return $query->execute(['nota' => $nota]);
+        } */
 
-      public function avaliarMeme($id, $avaliacao) {
-           $query = "UPDATE memes_em_geral SET media_avaliacao = ? WHERE id = ?";
-        $stmt = $this->db->prepare($query);
-            $stmt->bind_param('ii', $avaliacao, $id);
-          $stmt->execute();
+
+        public function avaliar($meme_id, $avaliacoes) {
+            // Primero, validar que el meme_id existe
+            $query = $this->db->prepare("SELECT id FROM memes WHERE id = :meme_id");
+            $query->execute(['meme_id' => $meme_id]);
+            
+            // Verificar si el meme existe
+            if ($query->rowCount() > 0) {
+                // Insertar la evaluación
+                $insertQuery = $this->db->prepare("INSERT INTO avaliacoes (meme_id, nota) VALUES (:meme_id, :nota)");
+                return $insertQuery->execute(['meme_id' => $meme_id, 'nota' => $avaliacoes['nota']]);
+            } else {
+                // Manejo de error si el meme no existe
+                throw new Exception("El meme con ID $meme_id no existe.");
             }
+        }
     }
-    
 
-        
+       
+    
