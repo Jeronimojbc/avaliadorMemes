@@ -32,15 +32,15 @@
         $controller->show($matches[1]);
     }    
     /* Rota para avaliar*/     
-    elseif ($uri === preg_match('/^\/memes\/show\/avaliar\/(\d+)$/', $uri, $matches)) {
+    elseif (preg_match('/^\/memes\/show\/avaliar\/(\d+)$/', $uri, $matches)) {
         $controller = new MemesController();
-
+    
         print_r($matches);
-        $controller->show($matches[1]);
-
-
+        $controller->avaliar($matches[1]);
+    
         $controller->index();
     }
+    
 
 
 

@@ -49,7 +49,7 @@ class MemesController
             exit;
         }
 
-        if($extensao != 'jpg' && $extensao != 'png' && $extensao != 'jpeg' && $extensao != 'gif'){
+        if($extensao != 'jpg' && $extensao != 'png' && $extensao != 'jpeg' && $extensao != 'gif' && $extensao != 'webp'){
             echo 'Não aceitamos este tipo de Arquivo!';
             exit;
         }
@@ -73,25 +73,10 @@ class MemesController
     
     public function show($id)
     {
-        $memes = $this->model->getById($id);
-    // echo "<pre>";
-    // print_r($memes);
-    // exit;
+        $meme = $this->model->getById($id);
+
         
         require 'app/views/memes/show.php';
-    }
-
-    public function update($id)
-    {
-        $meme = [
-            'titulo' => $_POST['titulo'],
-            'descricao' => $_POST['descricao'],
-            'imagem_url' => $_POST['imagem_url'],   
-            'imagem_upload' => $_POST['imagem_upload'],
-        ];
-        $this->model->update($id, $meme);
-        header('Location: /memes');
-
     }
 
     public function delete($id)
@@ -102,22 +87,26 @@ class MemesController
     }
 
     
-     public function avaliar() {
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $memeId = isset($_GET['id']) ? intval($_GET['id']) : 0;
-                $avaliacao = isset($_POST['avaliacao']) ? intval($_POST['avaliacao']) : 0;
-    
-                if ($memeId && $rating) {
-                    $memeModel = new MemeModel();
-                    $memeModel->avaliarMeme($memeId, $rating);
-    
-                    // Redirect or provide feedback
-                    echo "Meme Avaliado com Sucesso!";
-                } else {
-                    echo "Id Invalido Deu Errooo!.";
-                }
+     /* public function avaliar($meme_id) {
+            $avaliacoes = [
+                'nota' => $_POST['nota']
+            ];
+            $this->model->avaliar($meme_id,$avaliacoes);
+            header('Location: /memes');
+        } */
+   
+        public function avaliar($meme_id) {
+            $avaliacoes = [
+                'nota' => $_POST['nota']
+            ];
+            
+            try {
+                $this->model->avaliar($meme_id, $avaliacoes);
+                header('Location: /show'); // Redirigir después de la evaluación
+            } catch (Exception $e) {
+                // Manejar el error, por ejemplo, mostrar un mensaje
+                echo $e->getMessage();
             }
         }
-   
-    
+        
 }
