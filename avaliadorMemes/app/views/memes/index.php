@@ -31,11 +31,11 @@
                     <td><?= htmlspecialchars($meme['titulo']) ?></td>
                     <td>
                         <?php if ($meme['imagem_url']): ?>
-                            <img src="<?= htmlspecialchars($meme['imagem_url']) ?>"
-                                alt="<?= htmlspecialchars($meme['titulo']) ?>" width="100">
+                            <img src="<?php echo $meme['imagem_url']; ?>"
+                                alt="<?php echo $meme['titulo'] ?>" width="100">
                         <?php elseif ($meme['imagem_upload']): ?>
-                            <img src="uploads/<?= htmlspecialchars($meme['imagem_upload']) ?>"
-                                alt="<?= htmlspecialchars($meme['titulo']) ?>" width="100">
+                            <img src="<?php echo $meme['imagem_upload'] ?>"
+                                alt="<?php echo $meme['titulo'] ?>" width="100">
                         <?php endif; ?>
                     </td>
                     <td><?= htmlspecialchars($meme['media_avaliacao']) ?></td>
