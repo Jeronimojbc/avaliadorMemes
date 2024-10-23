@@ -17,9 +17,9 @@
     <p><?= htmlspecialchars($meme['descricao']) ?></p>
 
     <?php if ($meme['imagem_url']): ?>
-        <img src="<?= htmlspecialchars($meme['imagem_url']) ?>" alt="<?= htmlspecialchars($meme['titulo']) ?>" width="300">
+        <img src="<?php htmlspecialchars($meme['imagem_url']) ?>" alt="<?php htmlspecialchars($meme['titulo']) ?>" width="300">
     <?php elseif ($meme['imagem_upload']): ?>
-        <img src="uploads/<?= htmlspecialchars($meme['imagem_upload']) ?>" alt="<?= htmlspecialchars($meme['titulo']) ?>"
+        <img src="<?php htmlspecialchars($meme['imagem_upload']) ?>" alt="<?php htmlspecialchars($meme['titulo']) ?>"
             width="300">
     <?php endif; ?>
 
