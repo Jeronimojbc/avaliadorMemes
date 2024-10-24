@@ -34,7 +34,7 @@ class MemesController
         
         $arquivo = $_FILES['imagem_upload'];  //pega o arquivo enviado pelo formulário
         $nomeDoAqrquivo = $arquivo['name']; 
-        $pasta = '/app/public/uploads';
+        $pasta = 'app/public/uploads';
         $novoNomeArquivo = uniqid(); // usa essa funcao para dar um nome unico para o arquivo
         $extensao = strtolower(pathinfo($nomeDoAqrquivo, PATHINFO_EXTENSION)); /* pega a extensão do arquivo 
         e coloca em minusculo */
@@ -61,7 +61,7 @@ class MemesController
             exit;
         }
 
-        $meme['imagem_upload'] =  $pasta . '/' . $novoNomeArquivo . '.' . $extensao;
+        $meme['imagem_upload'] = '/' . $pasta . '/' . $novoNomeArquivo . '.' . $extensao;
         echo "<pre>";
         var_dump($meme);
        
