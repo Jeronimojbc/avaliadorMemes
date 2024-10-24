@@ -16,10 +16,10 @@
     <h1><?= htmlspecialchars($meme['titulo']) ?></h1>
     <p><?= htmlspecialchars($meme['descricao']) ?></p>
 
-    <?php if ($meme['imagem_url']): ?>
-        <img src="<?php htmlspecialchars($meme['imagem_url']) ?>" alt="<?php htmlspecialchars($meme['titulo']) ?>" width="300">
+    <?php if ($meme['imagem_upload']): ?>
+        <img src="<?php echo ($meme['imagem_upload']) ?>" alt="<?php echo htmlspecialchars($meme['titulo']) ?>" width="300">
     <?php elseif ($meme['imagem_upload']): ?>
-        <img src="<?php htmlspecialchars($meme['imagem_upload']) ?>" alt="<?php htmlspecialchars($meme['titulo']) ?>"
+        <img src="<?php echo ($meme['imagem_upload']) ?>" alt="<?php echo htmlspecialchars($meme['titulo']) ?>"
             width="300">
     <?php endif; ?>
 
