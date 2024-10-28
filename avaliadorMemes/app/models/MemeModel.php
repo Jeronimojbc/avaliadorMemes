@@ -36,18 +36,33 @@
           
         }
 
-        public function delete($id)  {  
-        $query = $this->db->prepare("DELETE FROM memes WHERE id = :id");
+        public function delete($id) {
+            try {
+                // Comenzar la transacción
+                $this->db->beginTransaction();
+        
+                // Primero, eliminar las evaluaciones relacionadas
+                $query = $this->db->prepare("DELETE FROM avaliacoes WHERE meme_id = :meme_id");
+                $query->execute(['meme_id' => $id]);
+        
+                // Luego, eliminar el meme
+                $query = $this->db->prepare("DELETE FROM memes WHERE id = :id");
+                $query->execute(['id' => $id]);
+        
+                // Confirmar la transacción
+                $this->db->commit();
+        
+                return true; // Retornar verdadero si la eliminación fue exitosa
 
-        return $query->execute(['id' => $id]);
-    }
-
-    // Funções para avaliar
-        /* public function avaliar($avaliacoes) {
-            $query = $this->db->prepare("INSERT INTO avaliacoes (nota) VALUES (:nota)");
-            return $query->execute(['nota' => $nota]);
-        } */
-
+                
+            } catch (PDOException $e) {
+                // Revertir la transacción en caso de error
+                $this->db->rollBack();
+                echo "Error al eliminar: " . $e->getMessage();
+                return false; // Retornar falso en caso de error
+            }
+        }
+        
 
         public function avaliar($meme_id, $avaliacoes) {
             // Primero, validar que el meme_id existe

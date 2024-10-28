@@ -41,6 +41,12 @@
         $controller->index();
     }
     
+    elseif (preg_match('/^\/memes\/delete\/(\d+)$/', $uri, $matches)) {
+        
+        $controller = new MemesController();
+        $controller->delete($matches[1]); 
+        $controller->index();
+    }
 
 
 

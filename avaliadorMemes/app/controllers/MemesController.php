@@ -83,18 +83,9 @@ class MemesController
     {
         $this->model->delete($id);
 
-        header('Location: /memes');
+        header('Location: /index.php');
     }
 
-    
-     /* public function avaliar($meme_id) {
-            $avaliacoes = [
-                'nota' => $_POST['nota']
-            ];
-            $this->model->avaliar($meme_id,$avaliacoes);
-            header('Location: /memes');
-        } */
-   
         public function avaliar($meme_id) {
             $avaliacoes = [
                 'nota' => $_POST['nota']
@@ -108,5 +99,6 @@ class MemesController
                 echo $e->getMessage();
             }
         }
+        
         
 }
