@@ -37,6 +37,7 @@
         </select>
         <button type="submit">Enviar Avaliação</button>
     </form>
+    <a href="/memes/delete/<?= $meme['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir este filme?')">Excluir</a>
 
 
 </body>

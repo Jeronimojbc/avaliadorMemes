@@ -12,7 +12,6 @@
                 !self::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
              
             }
-            echo "banco_funcionando"; //só vai aparecer quando a view mostar, mas na teoria está tudo certo
             return self::$conn;
         }
     }
