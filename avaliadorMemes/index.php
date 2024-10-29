@@ -28,14 +28,14 @@
     } elseif (preg_match('/^\/memes\/show\/(\d+)$/', $uri, $matches)) {
         $controller = new MemesController();
    
-        print_r($matches);
+        // print_r($matches);
         $controller->show($matches[1]);
     }    
     /* Rota para avaliar*/     
     elseif (preg_match('/^\/memes\/show\/avaliar\/(\d+)$/', $uri, $matches)) {
         $controller = new MemesController();
     
-        print_r($matches);
+        // print_r($matches);
         $controller->avaliar($matches[1]);
     
         $controller->index();
@@ -45,7 +45,7 @@
         
         $controller = new MemesController();
         $controller->delete($matches[1]); 
-        $controller->index();
+        
     }
 
 
