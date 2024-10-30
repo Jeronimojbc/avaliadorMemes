@@ -4,6 +4,7 @@
 
 #Chama o MemeController para ele funcionar   
     require_once 'app/controllers/MemesController.php';
+    require_once 'app/controllers/UsuariosController.php';
 
 
 
@@ -11,10 +12,16 @@
 
 
     if ($uri === '/' || $uri === '/index.php') {
-        $controller = new UsuariosController();# cria um obj do controller pra usar as funções
-         $controller->loginController()
+         $controller = new UsuariosController();# cria um obj do controller pra usar as funções
+         $controller->index();
     }
-    if ($uri === '/' || $uri === '/index.php'){ #checa se depois da barra tem algo
+
+    elseif($uri === '/login') {
+        $controller = new UsuariosController();
+         $controller->login();
+    }
+
+    elseif ($uri === '/home'){ #checa se depois da barra tem algo
         $controller = new MemesController();# cria um obj do controller pra usar as funções
          $controller->index(); #chama a função index
 
