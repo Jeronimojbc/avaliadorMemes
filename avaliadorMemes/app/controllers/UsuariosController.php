@@ -2,29 +2,34 @@
 
 require_once 'app/models/UsuarioModel.php';
 
-require 'app/models/login.php';
+require_once 'app/views/usuarios/login.php';
 
-class UsuarioController {
+require_once 'app/core/Database.php';
+
+class UsuariosController {
     private $model;
-    private $view;
 
-    public function __construct($model, $view) {
-        $this->model = $model;
-        $this->view = $view;
+    public function __construct($model) {
+        $this->model = new UsuarioModel();
     }
 
-    public function loginController() {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $username = $_POST['username'];
-            $password = $_POST['password'];
+    public function index() {
+      $usuarios = $this->model->getAll();
+      include '../views/login.php';
+    }
 
-            if ($this->model->login($username, $password)) {
-                $this->view->renderSuccess();
-            } else {
-                $this->view->renderError();
-            }
-        } else {
-            $this->view->renderLogin();
+    public function login(){
+
+    $id = $_POST['user_id'];
+    $senha = $_POST['senha'];
+    $usuario = $this->model->getById($id);
+    $senha_db = $user->senha;
+        if($senha == $senha_bd){
+            header('Location: /home');
+        }else{
+            $users = $this->model->getAll();
+            $error = "Usuário ou senha inválidos";
+            require 'views/usuarios/login.php';
         }
     }
 }
