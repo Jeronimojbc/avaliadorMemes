@@ -1,9 +1,8 @@
 <?php 
 
 require_once 'app/models/UsuarioModel.php';
+require_once 'app/views/usuarios/login.php';
 
-
-require 'app/views/usuarios/login.php';
 
 class UsuariosController {
 
@@ -12,7 +11,7 @@ class UsuariosController {
 
     public function __construct() {
         $this->model = new Usuariomodel();
-        $this->view = new Views();
+        $this->view = new ViewLogin();
     }
 
     public function loginController() {
@@ -25,33 +24,10 @@ class UsuariosController {
                 header('Location: /user-on');
             } else {
                 $this->view->renderError();
-                (header('Location: /'));
+                header('Location: /');
             }
         } else {
             $this->view->renderLogin();
 
-        } public function __construct($model) {
-        $this->model = new UsuarioModel();
     }
-
-    public function index() {
-      $usuarios = $this->model->getAll();
-      include '../views/login.php';
-    }
-
-    public function login(){
-
-    $id = $_POST['user_id'];
-    $senha = $_POST['senha'];
-    $usuario = $this->model->getById($id);
-    $senha_db = $user->senha;
-        if($senha == $senha_bd){
-            header('Location: /home');
-        }else{
-            $users = $this->model->getAll();
-            $error = "Usuário ou senha inválidos";
-            require 'views/usuarios/login.php';
-
-        }
-    }
-
+}
