@@ -18,11 +18,10 @@
 
     } elseif ($uri === '/user-on'){ #checa se depois da barra tem algo
 
-    // if ($uri === '/' || $uri === '/index.php') {
-    //     $controller = new UsuariosController();# cria um obj do controller pra usar as funções
-    //      $controller->loginController();
-    // }
-    if ($uri === '/' || $uri === '/index.php'){ #checa se depois da barra tem algo
+     if ($uri === '/' || $uri === '/index.php') {
+         $controller = new UsuariosController();# cria um obj do controller pra usar as funções
+          $controller->loginController();
+    }  else if ($uri === '/' || $uri === '/index.php'){ #checa se depois da barra tem algo
 
         $controller = new MemesController();# cria um obj do controller pra usar as funções
          $controller->index(); #chama a função index
@@ -31,7 +30,7 @@
         $controller = new MemesController();
         $controller->create(); # se for a URI memes chama a função create()
 
-    }elseif ($uri === '/memes/store'){
+    } elseif ($uri === '/memes/store'){
         $controller = new MemesController();
         $controller->store();
 
