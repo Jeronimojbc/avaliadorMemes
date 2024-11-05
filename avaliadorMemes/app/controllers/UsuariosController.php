@@ -7,13 +7,8 @@ require 'app/views/usuarios/login.php';
 
 class UsuariosController {
 
-
-require_once 'app/core/Database.php';
-
-class UsuariosController {
-
     private $model;
-    private $view
+    private $view;
 
     public function __construct() {
         $this->model = new Usuariomodel();
@@ -59,4 +54,4 @@ class UsuariosController {
 
         }
     }
-}
+
