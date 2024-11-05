@@ -28,6 +28,6 @@ class UsuariosController {
             }
         } else {
             $this->view->renderLogin();
-        }
+
     }
 }
