@@ -49,7 +49,7 @@ class MemesController
             exit;
         }
 
-        if($extensao != 'jpg' && $extensao != 'png' && $extensao != 'jpeg' && $extensao != 'gif' && $extensao != 'webp'){
+        if($extensao != 'jpg' && $extensao != 'png' && $extensao != 'jpeg' && $extensao != 'webp'){
             echo 'Não aceitamos este tipo de Arquivo!';
             exit;
         }
@@ -83,7 +83,7 @@ class MemesController
     {
         $this->model->delete($id);
 
-        header('Location: /index.php');
+        header('Location: /user-on');
     }
 
         public function avaliar($meme_id) {

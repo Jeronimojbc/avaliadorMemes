@@ -4,6 +4,7 @@
 
 #Chama o MemeController para ele funcionar   
     require_once 'app/controllers/MemesController.php';
+    require_once 'app/controllers/UsuariosController.php';
 
 
 
@@ -12,9 +13,9 @@
 
     if ($uri === '/' || $uri === '/index.php') {
         $controller = new UsuariosController();# cria um obj do controller pra usar as funções
-         $controller->loginController()
-    }
-    if ($uri === '/' || $uri === '/index.php'){ #checa se depois da barra tem algo
+         $controller->loginController();
+
+    } elseif ($uri === '/user-on'){ #checa se depois da barra tem algo
         $controller = new MemesController();# cria um obj do controller pra usar as funções
          $controller->index(); #chama a função index
 
@@ -33,14 +34,14 @@
     } elseif (preg_match('/^\/memes\/show\/(\d+)$/', $uri, $matches)) {
         $controller = new MemesController();
    
-        print_r($matches);
+        // print_r($matches);
         $controller->show($matches[1]);
     }    
     /* Rota para avaliar*/     
     elseif (preg_match('/^\/memes\/show\/avaliar\/(\d+)$/', $uri, $matches)) {
         $controller = new MemesController();
     
-        print_r($matches);
+        // print_r($matches);
         $controller->avaliar($matches[1]);
     
         $controller->index();
@@ -50,6 +51,7 @@
         
         $controller = new MemesController();
         $controller->delete($matches[1]); 
+        
         $controller->index();
     }
 

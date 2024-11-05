@@ -2,12 +2,12 @@
 class UsuarioModel {
     private $db;
 
-    public function __construct($db) {
+    public function __construct() {
         $this->db = Database::getConnection();
     }
 
     public function loginModel($email, $senha) {
-        $query = "SELECT * FROM users WHERE email = :email AND senha = :senha";
+        $query = "SELECT * FROM usuarios WHERE email = :email AND senha = :senha";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':senha', $senha);

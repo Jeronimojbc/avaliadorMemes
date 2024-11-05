@@ -46,7 +46,8 @@
             <?php endforeach; ?>
         </tbody>
     </table>
-
+    <br>
+    <a href="/" class="btn btn-info btn-sm" onclick="return confirm('Tem certeza que deseja sair?')">Log Out</a>
 </body>
 
 </html>

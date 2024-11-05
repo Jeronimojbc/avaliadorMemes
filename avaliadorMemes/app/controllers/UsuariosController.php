@@ -2,26 +2,29 @@
 
 require_once 'app/models/UsuarioModel.php';
 
-require 'app/models/login.php';
+require 'app/views/usuarios/login.php';
 
-class UsuarioController {
+class UsuariosController {
+
     private $model;
     private $view;
 
-    public function __construct($model, $view) {
-        $this->model = $model;
-        $this->view = $view;
+    public function __construct() {
+        $this->model = new Usuariomodel();
+        $this->view = new Views();
     }
 
     public function loginController() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $username = $_POST['username'];
+            $email = $_POST['email'];
             $password = $_POST['password'];
 
-            if ($this->model->login($username, $password)) {
+            if ($this->model->loginModel($email, $password)) {
                 $this->view->renderSuccess();
+                header('Location: /user-on');
             } else {
                 $this->view->renderError();
+                (header('Location: /'));
             }
         } else {
             $this->view->renderLogin();
