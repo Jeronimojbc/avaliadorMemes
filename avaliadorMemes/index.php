@@ -4,32 +4,29 @@
 
 #Chama o MemeController para ele funcionar   
     require_once 'app/controllers/MemesController.php';
+    
     require_once 'app/controllers/UsuariosController.php';
+    require_once 'app/views/usuarios/login.php';
 
 
 
     $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); #pega a URI e coloca em uma var
 
 
-
     if ($uri === '/' || $uri === '/index.php') {
         $controller = new UsuariosController();# cria um obj do controller pra usar as funções
          $controller->loginController();
 
-    } elseif ($uri === '/user-on'){ #checa se depois da barra tem algo
-         $controller = new UsuariosController();# cria um obj do controller pra usar as funções
-          $controller->loginController();
-                                   
-    }  else if ($uri === '/' || $uri === '/index.php'){ #checa se depois da barra tem algo
-
-        $controller = new MemesController();# cria um obj do controller pra usar as funções
-         $controller->index(); #chama a função index
-
-    } elseif ($uri === '/memes'){ 
+    } elseif ($uri === '/user-on') {
+        $controller = new MemesController();
+        $controller->index();
+    }
+    
+    elseif ($uri === '/memes'){ 
         $controller = new MemesController();
         $controller->create(); # se for a URI memes chama a função create()
 
-    } elseif ($uri === '/memes/store'){
+    }elseif ($uri === '/memes/store'){
         $controller = new MemesController();
         $controller->store();
 
@@ -57,10 +54,7 @@
         
         $controller = new MemesController();
         $controller->delete($matches[1]); 
-        
-
         $controller->index();
-
     }
 
 
