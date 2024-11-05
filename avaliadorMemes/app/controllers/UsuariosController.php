@@ -30,7 +30,7 @@ class UsuariosController {
         } else {
             $this->view->renderLogin();
 
-    public function __construct($model) {
+        } public function __construct($model) {
         $this->model = new UsuarioModel();
     }
 
