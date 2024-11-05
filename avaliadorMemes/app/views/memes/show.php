@@ -14,6 +14,34 @@
 
 <body>
 
+
+    <h1><?= htmlspecialchars($meme['titulo']) ?></h1>
+    <p><?= htmlspecialchars($meme['descricao']) ?></p>
+
+    <?php if ($meme['imagem_upload']): ?>
+        <img src="<?php echo ($meme['imagem_upload']) ?>" alt="<?php echo htmlspecialchars($meme['titulo']) ?>" width="300">
+    <?php elseif ($meme['imagem_upload']): ?>
+        <img src="<?php echo ($meme['imagem_upload']) ?>" alt="<?php echo htmlspecialchars($meme['titulo']) ?>"
+            width="300">
+    <?php endif; ?>
+
+    <h2>Avaliação Média: <?= htmlspecialchars($meme['media_avaliacao']) ?></h2>
+
+    <h3>Avaliar este Meme:</h3>
+    <form action="avaliar/<?= $meme['id'] ?>" method="POST">
+        <label for="nota">Nota (1-5):</label>
+        <select name="nota" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <button type="submit">Enviar Avaliação</button>
+    </form>
+    <a href="/memes/delete/<?= $meme['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja apagar este meme 🙃?')">Excluir</a>
+
+
     <div class="container">
     
         <h1 class="text-center"><?= htmlspecialchars($meme['titulo']) ?></h1>
@@ -54,6 +82,7 @@
 
            <a href="/" class="btn btn-secondary" >Voltar</a>
     </div>
+
 
 </body>
 
