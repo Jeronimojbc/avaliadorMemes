@@ -39,7 +39,7 @@
             </div>
         </div>
         <br>
-        <a href="/user-on" class="btn btn-info btn-sm" onclick="return confirm('Tem certeza que deseja sair?')">Log Out</a>
+        <a href="/" class="btn btn-info btn-sm" onclick="return confirm('Tem certeza que deseja sair?')">Log Out</a>
     </body>
 
 
