@@ -30,7 +30,7 @@ class Views {
 </html>';
     }
     public function renderSuccess() {
-        echo 'Logado com sucesso!';
+        echo 'Login efetuado com sucesso!';
         header('Location: /user-on');
     }
     public function renderError() {
