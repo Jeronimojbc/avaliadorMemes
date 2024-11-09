@@ -6,10 +6,8 @@ class UsuarioModel {
 
     public function __construct() {
         $this->db = Database::getConnection();
-        echo"UserModel Funcionando";
+        // echo"UserModel Funcionando";
     }
-
-
     public function loginModel($email, $senha) {
         $query = "SELECT * FROM usuarios WHERE email = :email AND senha = :senha";
         $stmt = $this->db->prepare($query);
@@ -17,17 +15,11 @@ class UsuarioModel {
         $stmt->bindParam(':senha', $senha);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
-
-    public function getAll() {
-        $query = $this->db->prepare("SELECT * FROM usuarios WHERE email = :email AND senha = :senha"); # prepara o comando
-        $query->execute(); #faaz o SELECT nesse caso
-        return $query->fetchAll(PDO::FETCH_OBJ); # retorna
     }
-    public function getById($id) {
-        $query = $this->db->prepare("SELECT * FROM usuarios WHERE id = :id");
-        $query->bindParam(':id', $id);
-        $query->execute();
-        return $query->fetch(PDO::FETCH_OBJ);
-
+  public function getAll() {
+        $query = "SELECT * FROM usuarios";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
