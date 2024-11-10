@@ -29,9 +29,10 @@ class UsuariosController {
          }
 
          if (empty($email) || empty($senha)) {
-            echo "PQ vc não preencheu tudo? <a href='/'>Voltar</a>";
+            echo "<script>alert('PQ vc não preencheu tudo?'); window.location.href = '/';</script>";
             exit;
-        } 
+        }
+        
 
          if (session_status() == PHP_SESSION_NONE) {
             session_start();

@@ -86,19 +86,23 @@ class MemesController
         header('Location: /user-on');
     }
 
-        public function avaliar($meme_id) {
-            $avaliacoes = [
-                'nota' => $_POST['nota']
-            ];
+    public function avaliar($meme_id) {
+        $avaliacoes = [
+            'nota' => $_POST['nota']
+        ];
+        
+        try {
+            // Llamar al método avaliar del modelo
+            $this->model->avaliar($meme_id, $avaliacoes);
             
-            try {
-                $this->model->avaliar($meme_id, $avaliacoes);
-                header('Location: /show'); // Redirigir después de la evaluación
-            } catch (Exception $e) {
-                // Manejar el error, por ejemplo, mostrar un mensaje
-                echo $e->getMessage();
-            }
+            // Redirigir después de la evaluación
+            header('Location: /show'); 
+        } catch (Exception $e) {
+            // Manejar el error, por ejemplo, mostrar un mensaje
+            echo $e->getMessage();
         }
+    }
+    
         
         
 }

@@ -73,13 +73,30 @@
             if ($query->rowCount() > 0) {
                 // Insertar la evaluación
                 $insertQuery = $this->db->prepare("INSERT INTO avaliacoes (meme_id, nota) VALUES (:meme_id, :nota)");
-                return $insertQuery->execute(['meme_id' => $meme_id, 'nota' => $avaliacoes['nota']]);
+                $insertQuery->execute(['meme_id' => $meme_id, 'nota' => $avaliacoes['nota']]);
+                
+                // Calcular la nueva media de las notas del meme
+                $avgQuery = $this->db->prepare("SELECT AVG(nota) as media_avaliacao FROM avaliacoes WHERE meme_id = :meme_id");
+                $avgQuery->execute(['meme_id' => $meme_id]);
+                $result = $avgQuery->fetch(PDO::FETCH_ASSOC);
+                
+                // Obtener la media
+                $media_avaliacao = $result['media_avaliacao'];
+                
+                // Actualizar la columna media_avaliacao en la tabla memes
+                $updateQuery = $this->db->prepare("UPDATE memes SET media_avaliacao = :media_avaliacao WHERE id = :meme_id");
+                return $updateQuery->execute(['media_avaliacao' => $media_avaliacao, 'meme_id' => $meme_id]);
             } else {
                 // Manejo de error si el meme no existe
                 throw new Exception("El meme con ID $meme_id no existe.");
             }
         }
+        
+        
+
+      
     }
+
 
        
     
