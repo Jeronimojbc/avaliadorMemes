@@ -1,3 +1,11 @@
+    <?php 
+    //começa a sessão
+    session_start(); 
+    // var_dump($_SESSION);
+        //verifica se o usuário está logado
+       UsuariosController::isLogged();
+    ?>
+    
     <!DOCTYPE html>
     <html lang="pt-br">
 
@@ -15,7 +23,7 @@
     <body>
                          
         <div class="container">
-            <h1 class="text-center mb-4">Lista de Memes</h1>
+            <h1 class="text-center mb-4">Bem-Vindo <?=$_SESSION['nome']; ?>, veja nossa nova Lista de Memes</h1>
             <div class="text-center mb-4">
                 <a class="btn btn-primary" href="/memes">Cadastrar Novo Meme</a>
             </div>
@@ -39,7 +47,7 @@
             </div>
         </div>
         <br>
-        <a href="/" class="btn btn-info btn-sm" onclick="return confirm('Tem certeza que deseja sair?')">Log Out</a>
+        <a href="/logout" class="btn btn-info btn-sm" onclick="return confirm('Tem certeza que deseja sair?')">Log Out</a>
     </body>
 
 

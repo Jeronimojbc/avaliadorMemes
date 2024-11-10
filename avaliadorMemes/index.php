@@ -13,7 +13,17 @@
         $controller = new UsuariosController();# cria um obj do controller pra usar as funções
          $controller->loginController();
 
-    } elseif ($uri === '/user-on'){ #checa se depois da barra tem algo
+    } elseif($uri === '/user-off'){
+        $controller = new UsuariosController();
+        $controller->cadastroController();
+
+    }
+    elseif($uri === '/logout'){
+        $controller = new UsuariosController();
+        $controller->logoutController();
+    }
+    
+    elseif ($uri === '/user-on'){ #checa se depois da barra tem algo
         $controller = new MemesController();
         $controller->index();
 

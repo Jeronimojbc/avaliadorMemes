@@ -1,3 +1,7 @@
+<?php
+session_start();
+UsuariosController::isLogged();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -13,10 +17,6 @@
 </head>
 
 <body>
-
-
-    
-    
 
     <div class="container">
     
@@ -53,7 +53,7 @@
             <button type="submit" class="btn btn-primary">Enviar Avaliação</button>
         </form>
 
-        <a href="/memes/delete/<?= $meme['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja apagar este meme 🙃?')">Excluir</a>
+        <a href="/memes/delete/<?= $meme['id'] ?>" class="btn btn-danger " onclick="return confirm('Tem certeza que deseja apagar este meme 🙃?')">Excluir</a>
 
 
            <a href="/user-on" class="btn btn-secondary" >Voltar</a>

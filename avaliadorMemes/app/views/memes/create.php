@@ -1,3 +1,7 @@
+<?php 
+session_start();
+UsuariosController::isLogged();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
