@@ -13,7 +13,40 @@ UsuariosController::isLogged();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-
+    <style>
+        body {
+            background-color: #2C3E50; /* Fondo oscuro */
+        }
+        .container {
+            background-color: #4B0082; /* Morado profundo */
+            color: #E5E5E5; /* Texto claro */
+            border: 2px solid #32CD32; /* Borde verde lima */
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 50px;
+        }
+        .btn-primary {
+            background-color: #32CD32; /* Verde lima */
+            border-color: #32CD32;
+            color: #4B0082; /* Texto morado */
+        }
+        .btn-primary:hover {
+            background-color: #228B22; /* Verde oscuro */
+            border-color: #228B22;
+        }
+        .btn-secondary {
+            background-color: #8A2BE2; /* Morado claro */
+            border-color: #8A2BE2;
+            color: #FFFFFF;
+        }
+        .btn-secondary:hover {
+            background-color: #5D3FD3; /* Morado más oscuro */
+            border-color: #5D3FD3;
+        }
+        .form-label {
+            color: #E5E5E5; /* Etiquetas claras */
+        }
+    </style>
 </head>
 
 <body>
@@ -42,9 +75,8 @@ UsuariosController::isLogged();
             </div>
 
             <button type="submit" class="btn btn-primary">Cadastrar Meme</button>
-            <a href="/" class="btn btn-secondary" >Voltar</a>
+            <a href="/user-on" class="btn btn-secondary">Voltar</a>
         </form>
-        
     </div>
 
 </body>
