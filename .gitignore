@@ -1,2 +1,6 @@
 #a public nao precisa ir para o github
 public
+node_modules
+package-lock.json
+package.json
+cypress
